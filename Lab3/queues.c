@@ -54,7 +54,7 @@ void enqueue(int *arr, int item, int *pfront, int *prear)
     }
 }
 
-int isEmpty(int *pfront)
+int empty(int *pfront)
 {
     // Check if front is -1
     // If it is queue is empty
