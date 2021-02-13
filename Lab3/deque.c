@@ -4,7 +4,8 @@
 
 void addToFront(int *arr, int item, int *pfront, int *prear)
 {
-    // Currently not working as intended //
+    int i, j, c;
+    // Currently not working as intended - throw small error but doesn't seem to impact final output //
 
     // Check if deque is full
     if (*prear == MAX - 1)
@@ -18,7 +19,26 @@ void addToFront(int *arr, int item, int *pfront, int *prear)
     if (*pfront == -1)
     {
         *pfront = *prear = 0;
-        printf("Adding %d to the head\n", item);
+        arr[*pfront] = item;
+        return;
+    }
+
+    if (*prear != MAX - 1)
+    {
+        c = count(arr);
+        j = *prear + 1;
+        for (i = 1; i <= c; i++)
+        {
+            arr[j] = arr[j - 1];
+            j--;
+        }
+        arr[j] = item;
+        *pfront = j;
+        (*prear)++;
+    }
+    else
+    {
+        (*pfront)--;
         arr[*pfront] = item;
     }
 }
@@ -132,6 +152,14 @@ int main()
         i = deleteFromFront(arr, &front, &rear);
         printf("Received Deleted item: %d\n", i);
     }
+
+    addToFront(arr, 2, &front, &rear);
+    addToRear(arr, 9, &front, &rear);
+    addToRear(arr, 2, &front, &rear);
+    addToFront(arr, 4, &front, &rear);
+    addToFront(arr, -50, &front, &rear);
+
+    display(arr);
 
     return 0;
 }
