@@ -43,41 +43,48 @@ public class Stack {
 
     /**
      * Method to display contents of Stack
-     * @param array Array to add to front of
+     * @param stack Array to add to front of
      */
-    private static void display(int[] array) {
-        for(int item : array) {
+    private static void display(int[] stack) {
+        for(int item : stack) {
             System.out.println(item);
         }
     }
 
     /**
      * Method to push an item onto the front of the stack
-     * @param array Array to push to front of
+     * @param stack Array to push to front of
      * @param item Item to add onto the front of the stack
      */
-    private static void push(int[] array, int item) {
-        if(InitStack.top == (array.length-1)) {
+    private static void push(int[] stack, int item) {
+        // If top is equal to the size of the stack - 1 (for zero indexing) then the stack is full
+        if(InitStack.top == (stack.length-1)) {
             System.out.println("Stack is full. Couldn't push " + item + " to stack.");
         } else{
+            // If stack is not full increment top by 1
             InitStack.top++;
-            array[InitStack.top] = item;
+            // Add item to top of stack
+            stack[InitStack.top] = item;
         }
     }
 
     /**
      * Method to pop an item from the end of the stack
-     * @param array Array to pop item from
+     * @param stack Array to pop item from
      * @return Item that was removed
      */
-    private static Integer pop(int[] array) {
+    private static Integer pop(int[] stack) {
         int item;
+        // If top is -1 then stack is empty
         if(InitStack.top == -1){
             System.out.println("Stack is empty.");
             return null;
         }
-        item = array[InitStack.top];
-        array[InitStack.top] = 0;
+        // Set item to pop to the last item in the stack
+        item = stack[InitStack.top];
+        // Set back to 0
+        stack[InitStack.top] = 0;
+        // Decrease top so next time pop is called the next item down is popped
         InitStack.top--;
         return item;
     }
