@@ -1,11 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-#define SIZE 10
+#define SIZE 15
+
+void populateArray(int *);
 
 int main(void)
 {
-    int arr[SIZE] = {26, 34543, 17, 31, 13, 543, 456, 1, 0, 2};
+    int arr[SIZE];
     int idx, target, tmp;
+
+    populateArray(arr);
 
     printf("Bubble Sort\n");
     printf("Before Sorting: \n");
@@ -23,8 +28,10 @@ int main(void)
             if (arr[target] > arr[target + 1])
             {
                 tmp = arr[target];
+                //printf("Sorting.. %d\n", tmp);
                 arr[target] = arr[target + 1];
                 arr[target + 1] = tmp;
+                //printf("Sorting.. %d\n", arr[target]);
             }
         }
     }
@@ -37,4 +44,14 @@ int main(void)
     printf("\n");
 
     return 0;
+}
+
+void populateArray(int *arr)
+{
+    for (int i = 0; i < SIZE; i++)
+    {
+        // Generate random int between 0 & 2999
+        int num = rand() % 3000;
+        arr[i] = num;
+    }
 }
