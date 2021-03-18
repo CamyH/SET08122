@@ -14,7 +14,7 @@ int main(void)
     int i;
 
     printf(" Mergesort \n");
-    printf(" Before sorting ...\ n");
+    printf(" Before sorting ...\n");
 
     for (i = 0; i < SIZE; i++)
     {
@@ -24,7 +24,7 @@ int main(void)
 
     _mergesort(data, 0, SIZE - 1);
 
-    printf(" After sorting ...\ n");
+    printf(" After sorting ...\n");
 
     for (i = 0; i < SIZE; i++)
     {
