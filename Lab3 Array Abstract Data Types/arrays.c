@@ -4,6 +4,7 @@
 
 void init(int *array);
 void insert(int *, int pos, int num);
+void replace(int *, int pos, int num);
 void delete (int *, int pos);
 void reverse(int *);
 void display(int *);
